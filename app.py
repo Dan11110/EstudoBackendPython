@@ -3,27 +3,34 @@ import os
 restaurantes = ["McBurguer", "Donalds King", "Totts", "Restaurante de regatas Vasco da Gama"]
 
 def encerrar_app():
-  os.system('cls')
-  print("Programa encerrado")
+  limpar_exibir("programa encerrado")
 
 def listar_pedidos():
-  os.system('cls')
-  print(restaurantes)    
+  limpar_exibir("Lista de pedidos de restaurantes cadastrados no aplicativo:\n")
+  for restaurante in restaurantes:
+      print(f"{restaurante}\n")
+  voltar()
 
 def cadastrar_restaurante():
-  os.system('cls')
-  print("Bem vindo ao cadastro de novos restaurantes\n")
-  
-  restaurante_novo =input("Digite o nome do restaurante: ")
+  limpar_exibir("Bem vindo ao cadastro de novos restaurantes\n")
+  restaurante_novo = input("Digite o nome do restaurante: ")
   restaurantes.append(restaurante_novo)
-  input(f"Restaurante {restaurante_novo} adicionado com sucesso!!!\n Digite uma tecla para voltar ao menu principal")
-  main()
+  input(f"Restaurante {restaurante_novo} adicionado com sucesso!!!")
+  voltar()
 
 def escolha_errada():
   input("Opção incorreta, digite uma tecla para voltar ao menu principal")
-  main()
+  voltar()
 
+def voltar():
+     input("\nAperte um botão para voltar ao menu")
+     main()
 
+#Função para limpar tela e exibir mensagem
+def limpar_exibir(texto):
+     os.system("cls")
+     input(texto)
+     
 def exibir_nome():
       print("""
 
@@ -62,15 +69,11 @@ def selecionar_opcoes():
       except:
             escolha_errada()
                 
-
-
 def main():
-   os.system('cls')
+   os.system("cls")
    exibir_nome()
    exibir_opcoes()
    selecionar_opcoes()
 
-   
-
-if __name__ == '__main__':
+if __name__ == "__main__":
   main()
